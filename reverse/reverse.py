@@ -39,25 +39,54 @@ class LinkedList:
         return False
 
     def reverse_list(self, node, prev):
-          # if the node is None -> do nothing 
+    #       # if the node is None -> do nothing 
         if not node:
             return
-        # the node is the last one when the next_node is None
+    #     # the node is the last one when the next_node is None
         if not node.next_node:
-            # set the last node as the head of reversed list
-            self.head = node
-            # the second node in the reverse list
-            # should be the pre-last node in the original list
-            # change the pointer of the next_node to be the previous node
-            node.next_node = prev
-            return
+    #         # set the last node as the head of reversed list
+             self.head = node
+    #         # the second node in the reverse list
+    #         # should be the pre-last node in the original list
+    #         # change the pointer of the next_node to be the previous node
+             node.next_node = prev
+             return
 
-        # Now go to the next node, which is actually the previous node
-        # because node.next_node = prev
-        # prev should be the next item in the original list,
-        # which is actually the node that was previously added in the reversed list
-        # reapply the method
+    #     # Now go to the next node, which is actually the previous node
+    #     # because node.next_node = prev
+    #     # prev should be the next item in the original list,
+    #     # which is actually the node that was previously added in the reversed list
+    #     # reapply the method
         self.reverse_list(node.next_node, prev=node)
-        # change the pointer for the next_node to be the previous node from original list
+    #     # change the pointer for the next_node to be the previous node from original list
         node.next_node = prev
         return
+    # another way of doing this
+#     def reverse_list(self, node, prev):
+#         prev = None
+#         current = self.head 
+#         while(current is not None): 
+#             next = current.next_node
+#             current.next_node = prev 
+#             prev = current 
+#             current = next
+#         self.head = prev 
+
+#     def print_list(self):
+#         current = self.head
+#         self.temp = []
+#         while current:
+#             self.temp.append(current.get_value())
+#             current = current.next_node
+#         print(self.temp) 
+
+# if __name__ == '__main__':
+#     sll = LinkedList()
+#     sll.add_to_head(1)
+#     sll.add_to_head(2)
+#     sll.add_to_head(3)
+#     sll.add_to_head(4)
+#     sll.add_to_head(5)
+#     sll.print_list()
+#     sll.reverse_list(sll.head, None)
+#     sll.print_list()
