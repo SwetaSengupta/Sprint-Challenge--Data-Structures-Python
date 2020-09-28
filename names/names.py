@@ -26,7 +26,7 @@ duplicates = []  # Return the list of duplicates in this data structure
 # First, create a BST (put first element as the root)           
 bst = BSTNode(names_1[0])
 # add all the names from names_1 in the tree
-for name in names_1:
+for name in names_1[1:]: # Insert remaining nodes from names_1
     bst.insert(name)
 
 # for each name in the second list
